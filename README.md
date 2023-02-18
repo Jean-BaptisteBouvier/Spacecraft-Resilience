@@ -4,14 +4,19 @@ This project gathers the MATLAB codes used in the paper "Resilient Trajectory Tr
 This work is not published and not available yet.
 
 
+**Prerequisite**
+---
+The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) and [CORA](https://tumcps.github.io/CORA/) are required to run these codes.
+
+
 **File Structure**
 ---
 
-The file 'spacecraft_resilience.m' verifies the resilience of the spacecraft dynamics and compute its reachable set.
-It requires the MATLAB toolboxes [mpt](https://www.mpt3.org/) and [CORA](https://tumcps.github.io/CORA/).
+1- The file `spacecraft_resilience.m` verifies the resilience of the spacecraft dynamics and compute its reachable set.
+2- The file `feedback_control.m` computes the parameters $\varepsilon$, `rho_max` depending on matrices $K$, $P$ and $Q$ for the resilient feedback control Theorem 4.
+3-
+4- The file `main.m` computes the resilient trajectory tracking.
 
-The file 'main.m' computes the resilient trajectory tracking.
-The minimal fuel reference trajectory requires the [cvx](http://cvxr.com/cvx/) toolbox on MATLAB .
 
 
 
