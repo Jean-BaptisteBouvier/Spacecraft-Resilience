@@ -12,10 +12,10 @@ The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) a
 **File Structure**
 ---
 
-1- The file `spacecraft_resilience.m` verifies the resilience of the spacecraft dynamics and compute its reachable set.
-2- The file `feedback_control.m` computes the parameters $\varepsilon$, `rho_max` depending on matrices $K$, $P$ and $Q$ for the resilient feedback control Theorem 4.
-3-
-4- The file `main.m` computes the resilient trajectory tracking.
+- The file `spacecraft_resilience.m` verifies the resilience of the spacecraft dynamics and compute its reachable set.
+- The file `feedback_control.m` computes the parameters $\alpha$, $\beta$, $\gamma$, $\varepsilon$ and $\rho_{max}$ for a choice of matrices $K$, $P$ and $Q$ for the resilient feedback control Theorem 4.
+- The file `main.m` computes the resilient trajectory tracking simulation.
+- All the functions called by these aforementioned files are gathered in the folder `functions`.
 
 
 
