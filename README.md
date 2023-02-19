@@ -3,6 +3,8 @@
 This project gathers the MATLAB codes used in the paper "Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay" by Jean-Baptiste Bouvier, Himmat Panag, Robyn Woollands and Melkior Ornik.
 This work is not published and not available yet.
 
+The fuel-optimal trajectory used as reference trajectory is designed with the convex optimization method described in ["Autonomous optimal trajectory planning for orbital rendezvous, satellite inspection, and final approach based on convex optimization"](https://link.springer.com/article/10.1007/s40295-021-00260-5) from Nicholas Ortolano, see reference below.
+
 
 **Prerequisite**
 ---
@@ -26,8 +28,9 @@ The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) a
 
 
 
-**Citation**
+**Citations**
 ---
+Our work can be cited with:
 ```
 @article{bouvier2023tracking,  
   title = {Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay},   
@@ -39,6 +42,21 @@ The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) a
   pages = {}  
 }
 ```
+
+The optimal trajectory design can be cited with:
+```
+@article{Ortolano,
+  title = {Autonomous optimal trajectory planning for orbital rendezvous, satellite inspection, and final approach based on convex optimization},
+  author = {Ortolano, Nicholas and Geller, David K and Avery, Aaron},
+  journal = {Journal of the Astronautical Sciences},
+  pages = {444 -- 479},
+  year = {2021},
+  volume = {68},
+  publisher = {Springer}
+}
+```
+
+
 
 **Contributors**
 ---
