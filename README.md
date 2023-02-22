@@ -22,10 +22,6 @@ The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) a
 
 
 
-**Running**
----
-
-
 
 
 **Citations**
@@ -35,7 +31,7 @@ Our work can be cited with:
 @article{bouvier2023tracking,  
   title = {Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay},   
   author = {Jean-Baptiste Bouvier, Himmat Panag, Robyn Woollands and Melkior Ornik},    
-  journal = {Journal of Guidance Dynamics and Control},    
+  journal = {ArXiv},    
   year = {2023},   
   volume = {},  
   number = {},  
