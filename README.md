@@ -14,10 +14,12 @@ The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) a
 **File Structure**
 ---
 
+- Folder `functions` contains all the functions that will be called by the scripts of the repository.
+- Folder `data` contains the precomputed reference trajectories and undesirable thrust signals. These are computed by the `main` file if not found in the `data` folder. The reference trajectory can be long to compute because of the optimization problem to solve. We store the undesirable thrust signals to be able to reuse them and compare different scenarios.
 - The file `spacecraft_resilience.m` verifies the resilience of the spacecraft dynamics and compute its reachable set.
 - The file `feedback_control.m` computes the parameters $\alpha$, $\beta$, $\gamma$, $\varepsilon$ and $\rho_{max}$ for a choice of matrices $K$, $P$ and $Q$ for the resilient feedback control Theorem 4.
 - The file `main.m` computes the resilient trajectory tracking simulation.
-- All the functions called by these aforementioned files are gathered in the folder `functions`.
+
 
 
 
