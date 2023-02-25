@@ -1,9 +1,12 @@
-function [x, u] = Optimal_2D_TrajCW_theta(params, x)
 % Compute the minimal-fuel reference trajectory with satellite pointing towards target    
 % x is the reference trajectory with constant attitude of the spacecraft [~, x, ~] = Optimal_2D_TrajCW(params);
 % Based on the list of positions, calculate the matrix Bd of each step
 % Redo a cvx optimization with these different Bd matrices, instead of
 % having the same for every step.
+%
+% Author: Himmat Panag
+
+function [x, u] = Optimal_2D_TrajCW_theta(params, x)
 
     N = params.numSteps; % Number of discretization steps in control input
 

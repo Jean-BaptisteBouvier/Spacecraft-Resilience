@@ -1,8 +1,11 @@
-function [eta, x, u] = Optimal_2D_TrajCW(params)
-    % This function uses CVX to generate the optimal trajectory of a convex
-    % RPO problem. This function is limited to a non rotating target spacecraft
-    % and uses the CW equations in cartesian coordinates. 
+% This function uses CVX to generate the optimal trajectory of a convex
+% RPO problem. This function is limited to a non rotating target spacecraft
+% and uses the CW equations in cartesian coordinates. 
+%
+% Author: Himmat Panag
 
+function [eta, x, u] = Optimal_2D_TrajCW(params)
+   
     N = params.numSteps; % Number of discretization steps in control input
     
     f = ones(N,1)./params.Omega^2;
