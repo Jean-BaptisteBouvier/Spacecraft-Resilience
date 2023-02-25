@@ -1,4 +1,4 @@
-%%% Pareto front
+%%% Calculation of the Pareto front on the actuation delay and saturation value of w
 %%%
 %%% Authors: Jean-Baptiste Bouvier and Himmat Panag.
 
