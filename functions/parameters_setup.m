@@ -4,9 +4,9 @@
 function params = parameters_setup(dt, failure, mass, thrust, transfer_time, waypoints)
 
 %%% Waypoint following Chapter 7 of Ortolano's thesis
-params = CW_RPO_TestCondition(125102990);
+% params = CW_RPO_TestCondition(125102990);
 params.Omega = 0.001060922896439; % [rad/s]
-params.simTimeHours = transfer_time; % [hours]
+params.transfer_time = transfer_time; % [hours]
 params.vInit = [0; 0];
 params.vFinal = [0; 0];
 params.mass = mass; % [kg]
@@ -15,6 +15,7 @@ params.dt = dt;
 params.waypoints = waypoints;
 params.V_exit = 1660*9.81; % [m/s] = Isp [s] x g [m/s^2] exit velocity of ions in PPS-1350
 params.failure = failure; % id of the malfunctioning thruster in {1,2,3,4,5}. Only resilient to no. 4
+params.max_thrust = 1;
 
 %%% Matrices of the system
 B_bar = params.thrust_factor*[zeros(2,5); 1, 1, -1, -sqrt(2), -1; 1, -1, -1, 0, 1];

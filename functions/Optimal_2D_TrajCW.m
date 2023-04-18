@@ -6,11 +6,10 @@
 
 function [eta, x, u] = Optimal_2D_TrajCW(params)
    
-    N = params.numSteps; % Number of discretization steps in control input
+    N = params.numSteps; % Number of steps in between the start and end points
     
     f = ones(N,1)./params.Omega^2;
-    simTime = params.simTimeHours*60*60; 
-    dt = simTime/N;
+    dt = params.dt;
     A = params.matrix_A;
     B = params.matrix_B/params.thrust_factor;
     [n, m] = size(B);
@@ -40,22 +39,10 @@ function [eta, x, u] = Optimal_2D_TrajCW(params)
         for ii = 1:N
             norm(u(:,ii)) <= eta(ii); % thrust minimizer
             0 <= eta(ii);
-            eta(ii) <= params.aMax; % max thrust
+            eta(ii) <= params.max_thrust;
             for jj = 1:m
                 0 <= u(jj,ii); % only positive thrust inputs
             end
-            
-            if params.coneConstraintActive 
-                coneAxisUnitVec = params.coneAxisVector;
-                norm(x(1:2,ii))*cos(params.coneAngle) <= coneAxisUnitVec'*x(1:2,ii);
-            end 
-            
-            if params.usePlanarConstraints
-                for kk = 1:numel(params.planarConstraint)
-                    % Assert that dot(x_kk,i) > Rmin;
-                    dot(x(1:2,params.planarConstraint(kk).elementNum), params.planarConstraint(kk).dirVector) >= params.planarConstraint(kk).minRadius;
-                end 
-            end 
         end 
         for ii = 2:N
             x(:,ii) == Phi*x(:,ii-1) + Bd*u(:,ii-1);

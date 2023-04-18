@@ -5,8 +5,8 @@ function reference_trajectory_analysis(params, X_ref, U_ref)
 nb_transfers = length(params.waypoints(:,1))-1;
 N = length(X_ref(1,:));
 dt = params.dt;
-time = [1:N]*dt/3600; % [hours]
-x_limit = nb_transfers*params.simTimeHours;
+time = (1:N)*dt/3600; % [hours]
+x_limit = nb_transfers*params.transfer_time;
 
 
 
@@ -46,12 +46,19 @@ hold on
 grid on
 for i = 1:10:N % too many datapoints for scatter
     p_ref = B*U_ref(:,i);
-    scatter(p_ref(3), p_ref(4), 30, 'blue', 'filled')
+    scatter(p_ref(3), p_ref(4), 20, 'blue', 'filled')
 end
-xlabel('p_{ref}(3)   (m/s^2)')
-ylabel('p_{ref}(4)   (m/s^2)')
-set(gca,'fontsize', 18);
 
+plot(p_ref_max*cos(0:0.01:2*pi), p_ref_max*sin(0:0.01:2*pi), 'red', 'LineWidth',2)
+xlabel('p_{ref}(3)')
+ylabel('p_{ref}(4)')
+set(gca,'fontsize', 18);
+axis equal
+an = annotation('doublearrow');
+an.Position = [0.515, 0.515, 0.207, 0.207];
+text(2e-4, 1.5e-4, '\rho_{ref}','FontSize',18)
+Fonts = listfonts;
+text(5e-4, 1e-4, "\fontname{"+Fonts{76}+"} P_{ref}",'FontSize',18,'Color','red')
 
 
 %%% Orientation on the reference orbit
@@ -70,9 +77,9 @@ for transferNum = 1:nb_transfers+1 % plotting waypoints
     if theta < 0
         theta = theta + 360;
     end
-    scatter(params.simTimeHours*(transferNum-1), theta, 40, colors(5,:), 'filled')
+    scatter(params.transfer_time*(transferNum-1), theta, 40, colors(5,:), 'filled')
     if theta == 0
-        scatter(params.simTimeHours*(transferNum-1), 360, 40, colors(5,:), 'filled')
+        scatter(params.transfer_time*(transferNum-1), 360, 40, colors(5,:), 'filled')
     end
 end
 xlim([0 x_limit])

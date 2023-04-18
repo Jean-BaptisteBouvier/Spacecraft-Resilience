@@ -6,8 +6,8 @@ function trajectory_analysis(params, X_ref, U_ref, W, X, U)
 nb_transfers = length(params.waypoints(:,1))-1;
 N = length(X_ref(1,:));
 dt = params.dt;
-time = [1:N]*dt/3600; % [hours]
-x_limit = nb_transfers*params.simTimeHours;
+time = (1:N)*dt/3600; % [hours]
+x_limit = nb_transfers*params.transfer_time;
 
 
 
@@ -33,18 +33,19 @@ xlim([-420 420]); ylim([-150 150]); % Cropping the trajectory
 
 
 
-%%% Speed
-[speed_ref, speed_Lechappe] = deal(zeros(1, N));
+%%%%%%%%%%%%%%%%%%%%%%%% Velocity plots %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[speed_ref, speed, speed_dif] = deal(zeros(1, N));
 for i = 1:N
     speed_ref(i) = norm(X_ref(3:4, i));
-    speed_Lechappe(i) = norm(X(3:4, i));
+    speed(i) = norm(X(3:4, i));
+    speed_dif(i) = norm(X(3:4, i) - X_ref(3:4, i));
 end
 
 figure
 hold on
 grid on
 plot(time, speed_ref*1e5, 'LineWidth', 2)
-plot(time, speed_Lechappe*1e5, 'LineWidth', 2)
+plot(time, speed*1e5, 'LineWidth', 2)
 xlabel('time (hours)')
 ylabel('velocity (cm/s)')
 legend('v_{ref}', 'v')
@@ -52,7 +53,18 @@ xlim([0 x_limit])
 set(gca,'fontsize', 18);
 
 
-%%% Norm error
+figure
+hold on
+grid on
+plot(time, speed_dif*1e6, 'LineWidth', 2)
+xlabel('time (hours)')
+ylabel('velocity error (mm/s)')
+xlim([0 x_limit])
+set(gca,'fontsize', 18);
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Norm error %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 norm_dif = zeros(1, N);
 step_around = 5; % number of steps to look around for minimal position error
 
@@ -82,7 +94,7 @@ disp('Average norm error ' + string(mean(norm_dif)) + '  maximal error ' + strin
 
     
     
-%%% Position Error
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Position Error %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 pos_dif = zeros(1, N);
 step_around = 5; % number of steps to look around for minimal position error
 
@@ -119,7 +131,7 @@ xlim([0 x_limit])
 set(gca,'fontsize', 18);
 
 
-%%% Fuel consumption
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fuel consumption %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 V_exit = params.V_exit; % [m/s] exit velocity of ions in PPS-1350
 [M_ref, M_u, M_w] = deal(zeros(1, N));
 [M_ref(1), M_u(1), M_w(1)] = deal(params.mass);
@@ -134,6 +146,8 @@ M_ref = params.mass - M_ref;
 M_u = params.mass - M_u;
 M_w = params.mass - M_w;
 disp('m_ref = ' + string(M_ref(end)) + 'kg    m_u = ' + string(M_u(end)) + 'kg   m_w = ' + string(M_w(end)) + 'kg.')
+fuel_efficiency = 100*(M_u(end) - M_ref(end) - M_w(end))/(M_w(end) + M_ref(end));
+disp('fuel efficiency = ' + string(fuel_efficiency) + '%.')
 
 figure
 hold on
@@ -148,7 +162,7 @@ xlim([0 x_limit])
 set(gca,'fontsize', 18);
 
 
-%%% Control
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Control %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 [ref_control, Lechappe_control, W_control] = deal(zeros(1, N));
 for i = 1:N
     ref_control(i) = norm(U_ref(:,i));
