@@ -24,7 +24,7 @@ The inspecting satellite loses control authority over one of its thrusters (red)
 ![Counteracting malfunctioning thruster](plots/spacecraft_far.jpg "Counteracting malfunctioning thruster")
 
 Below is an accelerated version of the inspection mission with the malfunctioning spacecraft still tracking accurately its reference orbit and taking the 4 pictures of the target satellite.
-![Inspection mission](plots/gif_video.gif "Inspection mission")
+![Inspection mission](plots/spacecraft_gif.gif "Inspection mission")
 
 We quantified the impact of the actuation delay and of the maximal undesirable thrust allowed. The higher the actuation delay $\tau$, the lower the saturation limit of $w$ must be for the tracking to be successful. This relationship can be summarized by a Pareto front shown below.
 ![Pareto front](plots/pareto_front.jpg "Pareto front")
