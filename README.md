@@ -1,7 +1,7 @@
 # Spacecraft Resilience to Partial Loss of Control Authority over a Thruster
 
-This project gathers the MATLAB codes used in the paper "Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay" by Jean-Baptiste Bouvier, Himmat Panag, Robyn Woollands and Melkior Ornik.
-This work is not published yet, but it is available on [ArXiv](https://arxiv.org/abs/2303.12877).
+This project gathers the MATLAB codes used in the paper ["Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay"](https://arc.aiaa.org/doi/abs/10.2514/1.G007652) by Jean-Baptiste Bouvier, Himmat Panag, Robyn Woollands and Melkior Ornik.
+This work is published in the [Journal of Guidance, Control, and Dynamics](https://arc.aiaa.org/doi/abs/10.2514/1.G007652) and is also available on [ArXiv](https://arxiv.org/abs/2303.12877).
 
 The fuel-optimal trajectory used as reference trajectory is designed with the convex optimization method described in ["Autonomous optimal trajectory planning for orbital rendezvous, satellite inspection, and final approach based on convex optimization"](https://link.springer.com/article/10.1007/s40295-021-00260-5) from Nicholas Ortolano, see reference below. The convex optimization code used here was written by Himmat Panag.
 
@@ -55,13 +55,12 @@ The MATLAB toolboxes [mpt](https://www.mpt3.org/), [cvx](http://cvxr.com/cvx/) a
 Our work can be cited with:
 ```
 @article{bouvier2023tracking,  
-  title = {Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay},   
+  title = {Delayed Resilient Trajectory Tracking After Partial Loss of Control Authority over Actuators},   
   author = {Jean-Baptiste Bouvier, Himmat Panag, Robyn Woollands and Melkior Ornik},    
-  journal = {ArXiv},    
-  year = {2023},   
-  volume = {},  
-  number = {},  
-  pages = {}  
+  journal = {Journal of Guidance, Control, and Dynamics},    
+  year = {2025},   
+  volume = {48},  
+  number = {3}
 }
 ```
 
